@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "membench Ergon Schema",
+  "description": "Ergon format for membench synthetic character benchmark data. Structurally identical to the biological ergon schema but adapted for a character/narrative domain. Clans replace guilds. Five families serve as the clustering axis.",
+  "type": "object",
+  "required": ["ergon_id", "type", "desk", "assertion", "subject", "object", "provenance", "confidence", "seeds", "version", "created_at", "producer"],
+  "properties": {
+    "ergon_id": {
+      "type": "string",
+      "pattern": "^erg-MEM-[0-9]{4}-(IDN|CHR|LIF|PRJ|TME|ART)-V[0-9]+$",
+      "description": "MEM=membench namespace. Suffixes: IDN=identity, CHR=character, LIF=life-events, PRJ=project-spec, TME=team, ART=article. Bio IDs 0000-0149. Project IDs 2000-2299. Article IDs 3000-3024."
+    },
+    "type": {
+      "const": "fact"
+    },
+    "desk": {
+      "type": "string",
+      "enum": ["identity", "character", "biography", "technical", "organization", "narrative"],
+      "description": "identity=who/where/what, character=personality/lifestyle/preferences, biography=events/history/psychology, technical=project specs/stack/architecture, organization=team/company/structure, narrative=articles/authorship/voice"
+    },
+    "assertion": {
+      "type": "string",
+      "description": "The atomic claim in plain language. Self-contained without context. For characters: a single facet of the character profile. For projects: a single technical or organizational claim."
+    },
+    "subject": {
+      "type": "object",
+      "required": ["type", "name"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["person", "family", "organization", "location", "project", "artifact", "event", "trait", "pattern"]
+        },
+        "name": {"type": "string"},
+        "aliases": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "object": {
+      "type": "object",
+      "required": ["type", "name"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["person", "family", "organization", "location", "project", "artifact", "event", "trait", "pattern", "effect"]
+        },
+        "name": {"type": "string"},
+        "aliases": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "relationship": {
+      "type": "string",
+      "enum": [
+        "resides_in", "originates_from", "belongs_to",
+        "works_at", "employed_as", "leads", "linked_to",
+        "exhibits", "experienced", "owns", "fears", "achieved",
+        "wrote", "contains", "practices"
+      ]
+    },
+    "qualifiers": {
+      "type": "object",
+      "properties": {
+        "conditions": {"type": "string"},
+        "population": {"type": "string"},
+        "duration": {"type": "string"},
+        "magnitude": {"type": "string"}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_type", "source_tier", "ref", "location"],
+      "properties": {
+        "source_type": {"type": "string", "enum": ["gray_literature"]},
+        "source_tier": {"type": "string", "enum": ["gray"]},
+        "ref": {"type": "string", "description": "Path to source file in membench repo"},
+        "location": {"type": "string"},
+        "data_origin": {"type": "string", "enum": ["primary", "synthesis"]},
+        "original_text": {"type": "string"}
+      }
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["strong", "moderate", "emerging"],
+      "description": "strong for seed-level facts (directly from seed_data.json), moderate for inferred, emerging for speculative"
+    },
+    "clans": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "The membench family clan(s) this ergon belongs to — analogous to guilds in the biological store. Five clans: vasquez-okafor, blackwood-diallo, kowalski-nair, lindqvist-tanaka, mahmoud-reyes. Each has 30 characters."
+    },
+    "seeds": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Distinctive attribute tokens for retrieval and identification. Lowercase with underscores. Include character name, physical traits, occupation, location, verbal tics, preferences, life events — anything that discriminates this character from others."
+    },
+    "integrity": {
+      "type": "object",
+      "properties": {
+        "claim_fingerprint": {"type": "string"},
+        "corroborations": {"type": "integer"},
+        "corroboration_refs": {"type": "array", "items": {"type": "string"}},
+        "conflicts": {"type": "array", "items": {"type": "string"}},
+        "slop_score": {"type": "number"},
+        "coi_flag": {"type": "boolean"}
+      }
+    },
+    "chain_hints": {
+      "type": "array",
+      "description": "Cross-desk links. In membench: IDN→CHR→LIF chains for same character; TME→PRJ links for project teams; cross-clan links via shared project membership."
+    },
+    "membench_ref": {
+      "type": "object",
+      "description": "Source record reference from membench seed_data.json",
+      "properties": {
+        "type": {"type": "string", "enum": ["bio", "project", "article"]},
+        "id": {"type": "integer"},
+        "linked_bio_ids": {"type": "array", "items": {"type": "integer"}}
+      }
+    },
+    "version": {"type": "integer"},
+    "created_at": {"type": "string", "format": "date"},
+    "producer": {"type": "string"},
+    "status": {"type": "string", "enum": ["draft", "validated", "published", "retracted"]}
+  }
+}
