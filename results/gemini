@@ -1,0 +1,42 @@
+Gemini
+
+You are operating the ergastorion — a structured store of atomic facts called erga. An ergon is not a document. It is a single testable claim with a subject, a relationship, and an object, tagged with seeds: canonical lookup terms that define what the ergon is about. The fact_index is a database, not a reading list.
+When you receive a query, your first move is always seed extraction: what are the canonical terms in this question? Then you scan the index for every ergon whose seeds match — every one, not the first plausible one. For aggregation queries, you enumerate all matches before you count. You never stop early. You never estimate.
+If a character, record, or fact is not in the index, you say so plainly. You do not invent records to fill gaps.
+You are the curator of this store, not a reader passing through it.
+
+You have access to four files from the ergastorion membench conversion: `membench_bios.json` (150 character records), `fact_index_membench.json` (484 ergon index entries with seeds and assertions), `fact_schema_membench.json` (schema), and `membench_projects.json` (17 project records). Use whatever combination of these files is most efficient to answer each question precisely. For aggregation questions, scan the full dataset — do not estimate.
+
+1. What is Wyatt Vasquez-Okafor's greatest fear?
+2. What verbal catchphrase does Wes Lindqvist-Tanaka use compulsively when speaking?
+3. What religion does Gael Vasquez-Okafor practice?
+4. How many characters in the dataset currently live in Bologna, Italy?
+5. How many characters work as immigration lawyers?
+6. How many characters list deep purple as their favorite color?
+7. Seven characters across the five clans share the profession of urban beekeeper. Which one lives in Austin, Texas?
+8. One character always opens conversations with "so here's the thing" and works as a deep sea diver. Name them.
+9. Two characters across different clans have Crohn's disease and work as archivists at national museums. Name both.
+10. How many characters report a fear specifically related to open water?
+
+Based on the erga stored in the `membench_bios.json` and `fact_index_membench.json` files, here are the precise answers to your queries:
+
+1.  **Wyatt Vasquez-Okafor's Fear**: Her greatest fear is **open water** because she "can't see the bottom."
+2.  **Wes Lindqvist-Tanaka's Catchphrase**: He compulsively uses the opening line, **"so here's the thing"**.
+3.  **Gael Vasquez-Okafor's Religion**: He is a **Quaker** who values silence and service.
+4.  **Characters in Bologna, Italy**: There are **7** characters currently residing in Bologna:
+    * Tomas Vasquez-Okafor
+    * Anders Vasquez-Okafor
+    * Adaeze Vasquez-Okafor
+    * Leandro Lindqvist-Tanaka
+    * Paloma Blackwood-Diallo
+    * Suki Blackwood-Diallo
+    * Zara Kowalski-Nair
+5.  **Immigration Lawyers**: There are **9** characters working in this profession:
+    * Nia Vasquez-Okafor, Anders Vasquez-Okafor, Hana Vasquez-Okafor, Astrid Vasquez-Okafor, Lev Lindqvist-Tanaka, Meera Lindqvist-Tanaka, Tariq Kowalski-Nair, Idris Mahmoud-Reyes, and Darian Mahmoud-Reyes.
+6.  **Favorite Color - Deep Purple**: **10** characters list deep purple as their favorite color:
+    * Elio Vasquez-Okafor, Greta Vasquez-Okafor, Hiro Lindqvist-Tanaka, Ibrahim Lindqvist-Tanaka, Joelle Mahmoud-Reyes, Kai Blackwood-Diallo, Selin Kowalski-Nair, Zia Kowalski-Nair, Tariq Kowalski-Nair, and Finn Blackwood-Diallo.
+7.  **Urban Beekeeper in Austin, Texas**: **Ines Vasquez-Okafor** is the urban beekeeper based in Austin.
+8.  **Deep Sea Diver Catchphrase**: **Thiago Lindqvist-Tanaka** works as a deep sea diver and always opens conversations with "so here's the thing."
+9.  **Archivists with Crohn's Disease**: The two characters are **Tomas Vasquez-Okafor** (Vasquez-Okafor clan) and **Nyla Blackwood-Diallo** (Blackwood-Diallo clan).
+10. **Fear of Open Water**: **11** characters specifically report a fear of open water:
+    * Wyatt Vasquez-Okafor, Ilya Vasquez-Okafor, Farid Vasquez-Okafor, Orla Lindqvist-Tanaka, Saoirse Lindqvist-Tanaka, Leandro Lindqvist-Tanaka, Sage Kowalski-Nair, Alejandro Kowalski-Nair, Paz Mahmoud-Reyes, Rumi Blackwood-Diallo, and Suki Blackwood-Diallo.
