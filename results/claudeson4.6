@@ -1,0 +1,74 @@
+4/25/26: Naive Claude Cowork instance:
+You are operating the ergastorion — a structured store of atomic facts called erga. An ergon is not a document. It is a single testable claim with a subject, a relationship, and an object, tagged with seeds: canonical lookup terms that define what the ergon is about. The fact_index is a database, not a reading list.
+When you receive a query, your first move is always seed extraction: what are the canonical terms in this question? Then you scan the index for every ergon whose seeds match — every one, not the first plausible one. For aggregation queries, you enumerate all matches before you count. You never stop early. You never estimate.
+If a character, record, or fact is not in the index, you say so plainly. You do not invent records to fill gaps.
+You are the curator of this store, not a reader passing through it.
+
+You have access to four files from the ergastorion membench conversion: `membench_bios.json` (150 character records), `fact_index_membench.json` (484 ergon index entries with seeds and assertions), `fact_schema_membench.json` (schema), and `membench_projects.json` (17 project records). Use whatever combination of these files is most efficient to answer each question precisely. For aggregation questions, scan the full dataset — do not estimate.
+
+1. What is Wyatt Vasquez-Okafor's greatest fear?
+2. What verbal catchphrase does Wes Lindqvist-Tanaka use compulsively when speaking?
+3. What religion does Gael Vasquez-Okafor practice?
+4. How many characters in the dataset currently live in Bologna, Italy?
+5. How many characters work as immigration lawyers?
+6. How many characters list deep purple as their favorite color?
+7. Seven characters across the five clans share the profession of urban beekeeper. Which one lives in Austin, Texas?
+8. One character always opens conversations with "so here's the thing" and works as a deep sea diver. Name them.
+9. Two characters across different clans have Crohn's disease and work as archivists at national museums. Name both.
+10. How many characters report a fear specifically related to open water?
+
+Now let me run a comprehensive Python script to answer all ten questions at once.Here are the answers, drawn directly from the index — no estimation, full scans on every aggregation.
+
+---
+
+**1. Wyatt Vasquez-Okafor's greatest fear**
+`open water — can't see the bottom`
+
+---
+
+**2. Wes Lindqvist-Tanaka's compulsive verbal catchphrase**
+`always opens with 'so here's the thing'`
+(Note: this catchphrase is shared by 18 characters across the dataset — it is not unique to Wes.)
+
+---
+
+**3. Gael Vasquez-Okafor's religion**
+`Quaker — attends meeting for worship, values silence and service`
+
+---
+
+**4. Characters currently living in Bologna, Italy**
+**10 characters:** Tomas Vasquez-Okafor, Anders Vasquez-Okafor, Adaeze Vasquez-Okafor, Leandro Lindqvist-Tanaka, Meera Lindqvist-Tanaka, Zara Kowalski-Nair, Paloma Blackwood-Diallo, Lior Blackwood-Diallo, Yael Blackwood-Diallo, Suki Blackwood-Diallo.
+
+---
+
+**5. Characters working as immigration lawyers**
+**9 characters:** Nia, Anders, Hana, and Astrid Vasquez-Okafor; Lev and Meera Lindqvist-Tanaka; Idris and Darian Mahmoud-Reyes; Tariq Kowalski-Nair.
+
+---
+
+**6. Characters listing deep purple as their favorite color**
+**14 characters:** Elio and Greta Vasquez-Okafor; Hiro and Ibrahim Lindqvist-Tanaka; Joelle and Ayo Mahmoud-Reyes; Selin and Zia Kowalski-Nair; Juno, Kamau, Finn, Aaliya, Kai, and Suki Blackwood-Diallo.
+
+---
+
+**7. The urban beekeeper who lives in Austin, Texas**
+**Ines Vasquez-Okafor.** (The full roster of seven: Ines Vasquez-Okafor — Austin TX; Gael Vasquez-Okafor — Lisbon; Jasper Vasquez-Okafor — Brussels; Sergei Vasquez-Okafor — Bergen; Gia Kowalski-Nair — Edinburgh; Quinn Blackwood-Diallo — Dublin; Finn Blackwood-Diallo — Omaha NE.)
+
+---
+
+**8. The character who opens with "so here's the thing" and works as a deep sea diver**
+**Thiago Lindqvist-Tanaka.**
+
+---
+
+**9. The two characters with Crohn's disease who work as archivists at national museums**
+- **Tomas Vasquez-Okafor** (Vasquez-Okafor clan)
+- **Nyla Blackwood-Diallo** (Blackwood-Diallo clan)
+
+Both are in remission on biologic medication; they are from different clans as specified.
+
+---
+
+**10. Characters with a fear specifically related to open water**
+**13 characters.** Every instance records the identical phrase `open water — can't see the bottom`. No other water-adjacent formulations (ocean, sea, drowning, etc.) appear anywhere in the fear field across the full 150-character dataset.
